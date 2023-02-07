@@ -25,9 +25,9 @@ class EstudianteController extends Controller
 
         $client = new Client();
         if (!empty($query)) {
-            $response = $client->get('http://proyectosoa.test/api/estudiantesS/' . $query);
+            $response = $client->get('http://localhost/api/estudiantesS/' . $query);
         } else {
-            $response = $client->get('http://proyectosoa.test/api/estudiantes');
+            $response = $client->get('http://localhost/api/estudiantes');
         }
 
         
@@ -67,7 +67,7 @@ class EstudianteController extends Controller
             'direccion' => $request->direccion
         ];
 
-        $response = $client->post('http://proyectosoa.test/api/crear', [
+        $response = $client->post('http://localhost/api/crear', [
             'form_params' => $data
         ]);
 
@@ -116,7 +116,7 @@ class EstudianteController extends Controller
 
 
         $client = new Client();
-        $response = $client->put('http://proyectosoa.test/api/editar/' . $estudiante->id, [
+        $response = $client->put('http://localhost/api/editar/' . $estudiante->id, [
             'form_params' => [
                 'cedula' => $request->cedula,
                 'nombre' => $request->nombre,
@@ -142,7 +142,7 @@ class EstudianteController extends Controller
     public function destroy($id)
     {
         $client = new Client();
-        $response = $client->delete('http://proyectosoa.test/api/eliminar/' . $id);
+        $response = $client->delete('http://localhost/api/eliminar/' . $id);
 
 
         $res = json_decode($response->getBody()->getContents(), true);
